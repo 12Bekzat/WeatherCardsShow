@@ -1,0 +1,32 @@
+﻿<Application x:Class="WeatherCards.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:WeatherCards"
+             StartupUri="MainWindow.xaml">
+    <Application.Resources>
+        <Style TargetType="ListBox">
+            <Setter Property="Height" Value="300"/>
+            <Setter Property="Width" Value="200"/>
+            <Setter Property="Background" Value="AliceBlue"/>
+            <Setter Property="Foreground" Value="Black"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="ListBoxItem">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="4*"/>
+                                <RowDefinition Height="2*"/>
+                                <RowDefinition Height="2*"/>
+                                <RowDefinition Height="2*"/>
+                            </Grid.RowDefinitions>
+                            <Image Grid.Row="0" Source="{Binding Photo}" />
+                            <TextBlock VerticalAlignment="Center" Text="{Binding Wind}" Grid.Row="1"/>
+                            <TextBlock VerticalAlignment="Center" Text="{Binding Degree}" Grid.Row="2"/>
+                            <TextBlock VerticalAlignment="Center" Text="{Binding Day}" Grid.Row="3"/>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Application.Resources>
+</Application>
