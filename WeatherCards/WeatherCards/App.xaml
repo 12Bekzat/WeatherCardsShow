@@ -4,25 +4,43 @@
              xmlns:local="clr-namespace:WeatherCards"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-        <Style TargetType="ListBox">
-            <Setter Property="Height" Value="300"/>
-            <Setter Property="Width" Value="200"/>
-            <Setter Property="Background" Value="AliceBlue"/>
-            <Setter Property="Foreground" Value="Black"/>
+        <Style TargetType="ListBoxItem">
+            <Setter Property="Height" Value="150"/>
+            <Setter Property="Width" Value="250"/>
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="ListBoxItem">
                         <Grid>
+                            <Grid.Background>
+                                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                    <GradientStop Color="#FF26A8CF" Offset="0"/>
+                                    <GradientStop Color="#FF94CDDE" Offset="1"/>
+                                </LinearGradientBrush>
+                            </Grid.Background>
                             <Grid.RowDefinitions>
-                                <RowDefinition Height="4*"/>
+                                <RowDefinition Height="1*"/>
                                 <RowDefinition Height="2*"/>
-                                <RowDefinition Height="2*"/>
-                                <RowDefinition Height="2*"/>
+                                <RowDefinition Height="1*"/>
                             </Grid.RowDefinitions>
-                            <Image Grid.Row="0" Source="{Binding Photo}" />
-                            <TextBlock VerticalAlignment="Center" Text="{Binding Wind}" Grid.Row="1"/>
-                            <TextBlock VerticalAlignment="Center" Text="{Binding Degree}" Grid.Row="2"/>
-                            <TextBlock VerticalAlignment="Center" Text="{Binding Day}" Grid.Row="3"/>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="1*"/>
+                            </Grid.ColumnDefinitions>
+                            <Image x:Name="weatherIcon" Source="{Binding Icon}" Grid.Column="1" Grid.Row="1" Width="100"/>
+                            <StackPanel Orientation="Horizontal" Grid.Row="0">
+                                <Image Source="Images/Untitled-1.png" Width="15" Height="15" Margin="10 0 0 0"/>
+                                <TextBlock x:Name="windSpeed" Text="{Binding speed}" FontSize="10" Margin="10 10 0 0"/>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" Grid.Row="1" Grid.Column="0">
+                                <TextBlock x:Name="celsiaDegree" Text="{Binding temp}" FontSize="40" Margin="10 5 0 0"/>
+                                <Image Source="Images/Untitled-2.png" Width="20" Height="20" Margin="0 -14 0 0"/>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" Grid.Row="2">
+                                <TextBlock Text="Day" FontSize="10" Margin="10 10 0 0"/>
+                                <TextBlock x:Name="dayTemp" Text="{Binding temp}" FontSize="10" Margin="2 10 0 0"/>
+                                <TextBlock Text="Night" FontSize="10" Margin="10 10 0 0"/>
+                                <TextBlock x:Name="nightTemp" Text="{Binding temp}" FontSize="10" Margin="2 10 0 0"/>
+                            </StackPanel>
                         </Grid>
                     </ControlTemplate>
                 </Setter.Value>
